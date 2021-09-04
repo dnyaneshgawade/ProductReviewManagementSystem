@@ -53,11 +53,23 @@ namespace ProjectReviewManagementSystem
             }
         }
 
+        public void SkipRecords(List<ProductReview> review)
+        {
+            var recordedData = (from list in review
+                                orderby list.Rating descending
+                                select list).Skip(5);
+
+            foreach (var item in recordedData)
+            {
+                Console.WriteLine("Product Id: " + item.ProductId + "User Id: " + item.UserId + "Product Rating: " + item.Rating + "Is Like: " + item.IsLike);
+            }
+        }
+
         public void Operations()
         {
             while (choice != 10)
             {
-                Console.WriteLine("\n Enter 1 for Display top Three records\n Enter 2 for Display Selected records\n Enter 3 for Display Count of Records For ProductID\n Enter 4 for Display Perticular Fields \n Enter 10 for exit ");
+                Console.WriteLine("\n Enter 1 for Display top Three records\n Enter 2 for Display Selected records\n Enter 3 for Display Count of Records For ProductID\n Enter 4 for Display Perticular Fields\n Enter 5 for Skip Five records \n Enter 10 for exit ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -72,6 +84,9 @@ namespace ProjectReviewManagementSystem
                         break;
                     case 4:
                         RetrivePerticularFields(Program.list);
+                        break;
+                    case 5:
+                        SkipRecords(Program.list);
                         break;
                     default:
                         Console.WriteLine("Enter wrong input");
