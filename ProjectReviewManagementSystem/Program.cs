@@ -5,7 +5,7 @@ namespace ProjectReviewManagementSystem
 {
     class Program
     {
-        public List<ProductReview> list = new List<ProductReview>()
+        public static List<ProductReview> list = new List<ProductReview>()
         {
             new ProductReview(){ProductId=1,UserId=1,Rating=4,IsLike=true},
             new ProductReview(){ProductId=2,UserId=2,Rating=5,IsLike=true},
@@ -37,6 +37,8 @@ namespace ProjectReviewManagementSystem
         static void Main(string[] args)
         {
             Console.WriteLine("Wellcome to Product Review Management system!");
+            Management management = new Management();
+            management.TopRecords(list);
         }
     }
 }
