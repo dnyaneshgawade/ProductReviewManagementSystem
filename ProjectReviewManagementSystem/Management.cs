@@ -33,12 +33,22 @@ namespace ProjectReviewManagementSystem
             }
         }
 
+        public void RetriveCount(List<ProductReview> review)
+        {
+            var recordedData = review.GroupBy(x => x.ProductId).Select(x => new { ProductID = x.Key, Count = x.Count() });
+      
+            foreach (var item in recordedData)
+            {
+                Console.WriteLine(item.ProductID +  "---" + item.Count );
+            }
+        }
+
         public void Operations()
         {
             Program program = new Program();
             while (choice != 10)
             {
-                Console.WriteLine("\n Enter 1 for Display top Three records\n Enter 2 for Display Selected records\n Enter 10 for exit ");
+                Console.WriteLine("\n Enter 1 for Display top Three records\n Enter 2 for Display Selected records\n Enter 3 for Display Count of Records For ProductID \n Enter 10 for exit ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -48,7 +58,9 @@ namespace ProjectReviewManagementSystem
                     case 2:
                         RetrivePerticularRecord(Program.list);
                         break;
-                    
+                    case 3:
+                        RetriveCount(Program.list);
+                        break;
                     default:
                         Console.WriteLine("Enter wrong input");
                         break;
