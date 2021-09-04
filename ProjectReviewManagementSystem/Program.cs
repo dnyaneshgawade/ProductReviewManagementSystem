@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ProjectReviewManagementSystem
 {
-    class Program
+    public class Program
     {
         public static List<ProductReview> list = new List<ProductReview>()
         {
@@ -38,7 +38,7 @@ namespace ProjectReviewManagementSystem
         {
             Console.WriteLine("Wellcome to Product Review Management system!");
             Management management = new Management();
-            management.TopRecords(list);
+            management.Operations();
         }
     }
 }
