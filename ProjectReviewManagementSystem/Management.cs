@@ -99,9 +99,20 @@ namespace ProjectReviewManagementSystem
                 Console.WriteLine("Product Id: " + item.ProductId + "User Id: " + item.UserId + "Product Rating: " + item.Rating +"Product Review: "+item.Review +"Is Like: " + item.IsLike);
             }
         }
+
+        public void DisplayAverage(List<ProductReview> review)
+        {
+            var recordedData = review.GroupBy(product => product.ProductId).Select(a => new { ProductId = a.Key, Average = a.Average(x => x.Rating) });
+            foreach (var list in recordedData)
+            {
+                Console.WriteLine(list.ProductId + "------" + list.Average);
+            }
+        }
+
+        
         public void Operations()
         {
-            while (choice != 10)
+            while (choice != 11)
             {
                 Console.WriteLine("\n Enter 1 for Display top Three records" +
                     "\n Enter 2 for Display Selected records" +
@@ -110,7 +121,8 @@ namespace ProjectReviewManagementSystem
                     "\n Enter 5 for Skip Five records" +
                     "\n Enter 6 for create DataTable " +
                     "\n Enter 7 for Display Records according to IsLike Field "+
-                    "\n Enter 10 for exit ");
+                    "\n Enter 8 for Display Average Rating For Each Product Id " +
+                    "\n Enter 11 for exit ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -135,7 +147,10 @@ namespace ProjectReviewManagementSystem
                     case 7:
                         RecordsByIsLike(Program.list);
                         break;
-
+                    case 8:
+                        DisplayAverage(Program.list);
+                        break;
+                    
                     default:
                         Console.WriteLine("Enter wrong input");
                         break;

@@ -31,7 +31,8 @@ namespace ProjectReviewManagementSystem
             new ProductReview(){ProductId=22,UserId=6,Rating=5,Review="Excellent",IsLike=true},
             new ProductReview(){ProductId=23,UserId=5,Rating=5,Review="Excellent",IsLike=true},
             new ProductReview(){ProductId=24,UserId=4,Rating=4,Review="Nice",IsLike=true},
-            new ProductReview(){ProductId=25,UserId=3,Rating=5,Review="Excellent",IsLike=true}
+            new ProductReview(){ProductId=25,UserId=3,Rating=5,Review="Excellent",IsLike=true},
+            
         };
 
         static void Main(string[] args)
