@@ -65,11 +65,39 @@ namespace ProjectReviewManagementSystem
             }
         }
 
+        public void DataTable(List<ProductReview> review)
+        {
+            dataTable.Columns.Add("ProductId", typeof(int));
+            dataTable.Columns.Add("UserId", typeof(int));
+            dataTable.Columns.Add("Rating", typeof(double));
+            dataTable.Columns.Add("Review", typeof(string));
+            dataTable.Columns.Add("IsLike", typeof(bool));
+            var recordedData = from list in review
+                               select list;
+            foreach (var item in recordedData)
+            {
+                dataTable.Rows.Add(item.ProductId, item.UserId, item.Rating, item.Review, item.IsLike);
+            }
+            var dataRow = from list in dataTable.AsEnumerable() select list;
+            foreach (var item in dataRow)
+            {
+                Console.WriteLine(item.Field<int>("ProductId") +" " + item.Field<int>("UserId") + " " +
+                    item.Field<double>("Rating") + " " + item.Field<string>("Review") + " " +
+                    item.Field<bool>("IsLike") + " " );
+            }
+        }
+
         public void Operations()
         {
             while (choice != 10)
             {
-                Console.WriteLine("\n Enter 1 for Display top Three records\n Enter 2 for Display Selected records\n Enter 3 for Display Count of Records For ProductID\n Enter 4 for Display Perticular Fields\n Enter 5 for Skip Five records \n Enter 10 for exit ");
+                Console.WriteLine("\n Enter 1 for Display top Three records" +
+                    "\n Enter 2 for Display Selected records" +
+                    "\n Enter 3 for Display Count of Records For ProductID" +
+                    "\n Enter 4 for Display Perticular Fields" +
+                    "\n Enter 5 for Skip Five records" +
+                    "\n Enter 6 for create DataTable " +
+                    "\n Enter 10 for exit ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -87,6 +115,9 @@ namespace ProjectReviewManagementSystem
                         break;
                     case 5:
                         SkipRecords(Program.list);
+                        break;
+                    case 6:
+                        DataTable(Program.list);
                         break;
                     default:
                         Console.WriteLine("Enter wrong input");
