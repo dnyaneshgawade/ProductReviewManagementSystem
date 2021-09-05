@@ -32,7 +32,16 @@ namespace ProjectReviewManagementSystem
             new ProductReview(){ProductId=23,UserId=5,Rating=5,Review="Excellent",IsLike=true},
             new ProductReview(){ProductId=24,UserId=4,Rating=4,Review="Nice",IsLike=true},
             new ProductReview(){ProductId=25,UserId=3,Rating=5,Review="Excellent",IsLike=true},
-            
+            new ProductReview(){ProductId=26,UserId=10,Rating=4,Review="Nice",IsLike=true},
+            new ProductReview(){ProductId=27,UserId=10,Rating=5,Review="Excellent",IsLike=true},
+            new ProductReview(){ProductId=28,UserId=10,Rating=5,Review="Excellent",IsLike=true},
+            new ProductReview(){ProductId=29,UserId=10,Rating=4,Review="Nice",IsLike=true},
+            new ProductReview(){ProductId=30,UserId=10,Rating=3,Review="Good",IsLike=true},
+            new ProductReview(){ProductId=31,UserId=10,Rating=3,Review="Good",IsLike=true},
+            new ProductReview(){ProductId=32,UserId=10,Rating=5,Review="Excellent",IsLike=true},
+            new ProductReview(){ProductId=33,UserId=10,Rating=1,Review="Flop",IsLike=false},
+            new ProductReview(){ProductId=34,UserId=10,Rating=2,Review="Average",IsLike=false},
+            new ProductReview(){ProductId=35,UserId=10,Rating=3,Review="Good",IsLike=true}
         };
 
         static void Main(string[] args)

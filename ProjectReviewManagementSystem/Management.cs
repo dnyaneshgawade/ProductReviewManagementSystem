@@ -122,6 +122,19 @@ namespace ProjectReviewManagementSystem
             }
         }
 
+        public void RetriveRecordsByUserId(List<ProductReview> review, int id)
+        {
+            var recordedData = from list in review
+                               where list.UserId == id
+                               orderby list.ProductId
+                               select list;
+
+            foreach (var item in recordedData)
+            {
+                Console.WriteLine("Product Id: " + item.ProductId + "User Id: " + item.UserId + "Product Rating: " + item.Rating + "Product Review: " + item.Review + "Is Like: " + item.IsLike);
+            }
+        }
+
         public void Operations()
         {
             while (choice != 11)
@@ -135,6 +148,7 @@ namespace ProjectReviewManagementSystem
                     "\n Enter 7 for Display Records according to IsLike Field "+
                     "\n Enter 8 for Display Average Rating For Each Product Id " +
                     "\n Enter 9 for Display Records according to Review Field " +
+                    "\n Enter 10 for Display Records according to UserId Field " +
                     "\n Enter 11 for exit ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -165,6 +179,9 @@ namespace ProjectReviewManagementSystem
                         break;
                     case 9:
                         RetriveRecordsByReview(Program.list, "Nice");
+                        break;
+                        case 10:
+                        RetriveRecordsByUserId(Program.list,10);
                         break;
                     default:
                         Console.WriteLine("Enter wrong input");
