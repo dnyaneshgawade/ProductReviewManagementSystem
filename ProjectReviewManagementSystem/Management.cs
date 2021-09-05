@@ -87,6 +87,18 @@ namespace ProjectReviewManagementSystem
             }
         }
 
+        public void RecordsByIsLike(List<ProductReview> review)
+        {
+            var recordedData = from list in review
+                               where list.IsLike = true
+                               orderby list.ProductId
+                               select list;
+
+            foreach (var item in recordedData)
+            {
+                Console.WriteLine("Product Id: " + item.ProductId + "User Id: " + item.UserId + "Product Rating: " + item.Rating +"Product Review: "+item.Review +"Is Like: " + item.IsLike);
+            }
+        }
         public void Operations()
         {
             while (choice != 10)
@@ -97,6 +109,7 @@ namespace ProjectReviewManagementSystem
                     "\n Enter 4 for Display Perticular Fields" +
                     "\n Enter 5 for Skip Five records" +
                     "\n Enter 6 for create DataTable " +
+                    "\n Enter 7 for Display Records according to IsLike Field "+
                     "\n Enter 10 for exit ");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -119,6 +132,10 @@ namespace ProjectReviewManagementSystem
                     case 6:
                         DataTable(Program.list);
                         break;
+                    case 7:
+                        RecordsByIsLike(Program.list);
+                        break;
+
                     default:
                         Console.WriteLine("Enter wrong input");
                         break;
